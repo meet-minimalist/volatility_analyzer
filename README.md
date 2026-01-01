@@ -4,18 +4,23 @@ A Python package for analyzing stock market volatility and beta.
 
 ## Installation
 
+Install directly from GitHub:
+```bash
+pip install git+https://github.com/meet-minimalist/yf_cache.git
+```
+
+Or from source:
 ```bash
 pip install .
 ```
 
 ## Usage
 
-```bash
-volatility-analysis
-```
-
-Or as a library:
-
 ```python
 from volatility_analysis import VolatilityAnalyzer
+
+report, stock_data, benchmark_data = analyzer.analyze_stock(
+    "RELIANCE.NS",
+    plot_results=True
+)
 ```

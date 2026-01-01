@@ -1,3 +1,11 @@
+'''
+ # @ Author: Meet Patel
+ # @ Create Time: 2026-01-01 12:23:27
+ # @ Modified by: Meet Patel
+ # @ Modified time: 2026-01-01 13:24:09
+ # @ Description: Setup script for volatility analysis package
+ '''
+
 from setuptools import setup
 
 setup(

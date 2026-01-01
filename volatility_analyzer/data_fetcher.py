@@ -12,7 +12,6 @@ from datetime import datetime
 from typing import Tuple, Optional
 from yf_cache import YFinanceDataDownloader
 
-from config import BENCHMARK_ALTERNATIVES
 from logging_config import get_logger
 
 logger = get_logger(__name__)
@@ -77,19 +76,6 @@ class DataFetcher:
             
         except Exception as e:
             logger.warning(f"Could not download {benchmark_ticker}: {e}")
-            
-            # Try alternative benchmark
-            if benchmark_ticker in BENCHMARK_ALTERNATIVES:
-                alt_ticker = BENCHMARK_ALTERNATIVES[benchmark_ticker]
-                logger.info(f"Trying alternative benchmark: {alt_ticker}")
-                
-                try:
-                    data = self.downloader.get_data(
-                        alt_ticker, start_date, end_date, interval="1d"
-                    )
-                    return data, alt_ticker
-                except Exception as e2:
-                    logger.warning(f"Alternative also failed: {e2}")
             
             # Final fallback to Nifty 50
             logger.warning("Using Nifty 50 as final fallback")

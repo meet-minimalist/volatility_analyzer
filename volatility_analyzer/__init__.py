@@ -3,7 +3,7 @@
  # @ Create Time: 2026-01-01 11:20:59
  # @ Modified by: Meet Patel
  # @ Modified time: 2026-01-01 13:20:26
- # @ Description:
+ # @ Description: Volatility Analyzer package initialization
  '''
 
 from .volatility_analyzer import VolatilityAnalyzer

@@ -7,7 +7,7 @@
  '''
 
 from datetime import datetime, timedelta
-from typing import List, Optional, Tuple
+from typing import Dict, Optional, Tuple
 import pandas as pd
 
 from config import (
@@ -16,7 +16,7 @@ from config import (
     DEFAULT_ROLLING_VOLATILITY_WINDOW,
     DEFAULT_ROLLING_BETA_WINDOW
 )
-from benchmark_selector import BenchmarkSelector
+# from benchmark_selector import BenchmarkSelector
 from data_fetcher import DataFetcher
 from metrics_calculator import MetricsCalculator
 from visualization import AnalysisVisualizer
@@ -33,7 +33,6 @@ class VolatilityAnalyzer:
         self,
         years_of_data: int = DEFAULT_YEARS_OF_DATA,
         cache_dir: str = DEFAULT_CACHE_DIR,
-        custom_benchmark_mappings: Optional[dict] = None
     ):
         """
         Initialize the volatility analyzer
@@ -41,14 +40,12 @@ class VolatilityAnalyzer:
         Args:
             years_of_data: Number of years of historical data
             cache_dir: Directory for caching downloaded data
-            custom_benchmark_mappings: Custom stock-to-benchmark mappings
         """
         self.years_of_data = years_of_data
         self.end_date = datetime.now()
         self.start_date = self.end_date - timedelta(days=365 * years_of_data)
         
         # Initialize components
-        self.benchmark_selector = BenchmarkSelector(custom_benchmark_mappings)
         self.data_fetcher = DataFetcher(cache_dir)
         self.metrics_calculator = MetricsCalculator()
         self.visualizer = AnalysisVisualizer()
@@ -72,7 +69,7 @@ class VolatilityAnalyzer:
         """
         # Step 1: Select benchmark
         if benchmark_ticker is None:
-            benchmark_ticker = self.benchmark_selector.get_benchmark(ticker)
+            raise RuntimeError("Benchmark stock not provided.")
         
         print(f"\nAnalyzing {ticker} vs {benchmark_ticker}")
         print(f"Period: {self.start_date.date()} to {self.end_date.date()}")
@@ -142,14 +139,14 @@ class VolatilityAnalyzer:
     
     def compare_multiple_stocks(
         self,
-        tickers: List[str],
+        ticker_dict: Dict[str, str],
         plot_comparison: bool = True
     ) -> Optional[pd.DataFrame]:
         """
         Compare multiple stocks against their respective benchmarks
         
         Args:
-            tickers: List of stock ticker symbols
+            ticker_dict: Dictionary mapping stock ticker symbols to their benchmark ticker symbols
             plot_comparison: Whether to create comparison plots
             
         Returns:
@@ -157,13 +154,13 @@ class VolatilityAnalyzer:
         """
         results_list = []
         
-        print(f"\nComparing {len(tickers)} stocks...")
+        print(f"\nComparing {len(ticker_dict)} stocks...")
         print("-" * 80)
         
-        for ticker in tickers:
+        for ticker, benchmark in ticker_dict.items():
             print(f"\nAnalyzing {ticker}...")
             try:
-                report, _, _ = self.analyze_stock(ticker, plot_results=False)
+                report, _, _ = self.analyze_stock(ticker, benchmark_ticker=benchmark, plot_results=False)
                 results_list.append(report.to_dict())
             except Exception as e:
                 print(f"Error analyzing {ticker}: {e}")
@@ -210,10 +207,6 @@ class VolatilityAnalyzer:
             ticker: Specific ticker to clear (None = clear all)
         """
         self.data_fetcher.clear_cache(ticker)
-    
-    def add_benchmark_mapping(self, ticker: str, benchmark: str):
-        """Add custom benchmark mapping"""
-        self.benchmark_selector.add_mapping(ticker, benchmark)
     
     def set_date_range(self, start_date: datetime, end_date: datetime):
         """Set custom date range for analysis"""
