@@ -9,8 +9,8 @@
 import pandas as pd
 import numpy as np
 from typing import Tuple
-from config import TRADING_DAYS_PER_YEAR
-from data_models import StockMetrics, BenchmarkMetrics, BetaAnalysisResult
+from volatility_analyzer.config import TRADING_DAYS_PER_YEAR
+from volatility_analyzer.data_models import StockMetrics, BenchmarkMetrics, BetaAnalysisResult
 
 
 class MetricsCalculator:

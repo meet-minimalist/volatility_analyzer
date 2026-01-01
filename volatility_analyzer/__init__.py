@@ -6,7 +6,7 @@
  # @ Description: Volatility Analyzer package initialization
  '''
 
-from .volatility_analyzer import VolatilityAnalyzer
-from .data_models import StockMetrics, BenchmarkMetrics, AnalysisReport
+from volatility_analyzer.volatility_analyzer import VolatilityAnalyzer
+from volatility_analyzer.data_models import StockMetrics, BenchmarkMetrics, AnalysisReport
 
 __all__ = ['VolatilityAnalyzer', 'StockMetrics', 'BenchmarkMetrics', 'AnalysisReport']

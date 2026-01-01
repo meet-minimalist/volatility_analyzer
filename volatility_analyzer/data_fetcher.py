@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Tuple, Optional
 from yf_cache import YFinanceDataDownloader
 
-from logging_config import get_logger
+from volatility_analyzer.logging_config import get_logger
 
 logger = get_logger(__name__)
 

@@ -11,11 +11,6 @@ Example 4: Custom Benchmark Mapping
 '''
 
 import logging
-import sys
-import os
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from volatility_analyzer import VolatilityAnalyzer
 
 def run_example():

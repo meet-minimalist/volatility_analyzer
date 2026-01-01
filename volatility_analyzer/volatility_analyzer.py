@@ -10,17 +10,17 @@ from datetime import datetime, timedelta
 from typing import Dict, Optional, Tuple
 import pandas as pd
 
-from config import (
+from volatility_analyzer.config import (
     DEFAULT_YEARS_OF_DATA,
     DEFAULT_CACHE_DIR,
     DEFAULT_ROLLING_VOLATILITY_WINDOW,
     DEFAULT_ROLLING_BETA_WINDOW
 )
 # from benchmark_selector import BenchmarkSelector
-from data_fetcher import DataFetcher
-from metrics_calculator import MetricsCalculator
-from visualization import AnalysisVisualizer
-from data_models import AnalysisReport
+from volatility_analyzer.data_fetcher import DataFetcher
+from volatility_analyzer.metrics_calculator import MetricsCalculator
+from volatility_analyzer.visualization import AnalysisVisualizer
+from volatility_analyzer.data_models import AnalysisReport
 
 
 class VolatilityAnalyzer:

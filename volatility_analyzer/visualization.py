@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from typing import List
-from data_models import AnalysisReport
+from volatility_analyzer.data_models import AnalysisReport
 
 
 class AnalysisVisualizer:

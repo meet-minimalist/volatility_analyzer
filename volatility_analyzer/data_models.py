@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from typing import Optional
 import pandas as pd
 
-from logging_config import get_logger
+from volatility_analyzer.logging_config import get_logger
 
 logger = get_logger(__name__)
 

@@ -9,11 +9,10 @@
 from setuptools import setup
 
 setup(
-    name="volatility_analysis",
+    name="volatility_analyzer",
     version="0.1.0",
     description="Stock Market Volatility and Beta Analysis Tool",
-    packages=["volatility_analysis"],
-    package_dir={"volatility_analysis": "."},
+    packages=["volatility_analyzer"],
     install_requires=[
         "pandas",
         "numpy",
@@ -22,7 +21,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "volatility-analysis=volatility_analysis.main:main",
+            "volatility-analysis=volatility_analyzer.main:main",
         ],
     },
 )

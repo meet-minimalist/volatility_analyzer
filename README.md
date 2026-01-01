@@ -17,7 +17,7 @@ pip install .
 ## Usage
 
 ```python
-from volatility_analysis import VolatilityAnalyzer
+from volatility_analyzer import VolatilityAnalyzer
 
 report, stock_data, benchmark_data = analyzer.analyze_stock(
     "RELIANCE.NS",

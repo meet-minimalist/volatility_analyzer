@@ -25,6 +25,7 @@ def run_example():
     
     report, stock_data, benchmark_data = analyzer.analyze_stock(
         "RELIANCE.NS",
+        "^NSEI",
         plot_results=True
     )
 

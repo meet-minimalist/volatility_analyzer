@@ -11,12 +11,7 @@ Example 5: Custom Date Range
 '''
 
 import logging
-import sys
-import os
 from datetime import datetime
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from volatility_analyzer import VolatilityAnalyzer
 
 def run_example():
