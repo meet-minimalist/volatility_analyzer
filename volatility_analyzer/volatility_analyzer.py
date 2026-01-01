@@ -53,7 +53,7 @@ class VolatilityAnalyzer:
     def analyze_stock(
         self,
         ticker: str,
-        benchmark_ticker: Optional[str] = None,
+        benchmark_ticker: str,
         plot_results: bool = True
     ) -> Tuple[AnalysisReport, pd.DataFrame, pd.DataFrame]:
         """
@@ -61,7 +61,7 @@ class VolatilityAnalyzer:
         
         Args:
             ticker: Stock ticker symbol
-            benchmark_ticker: Optional benchmark ticker (auto-selected if None)
+            benchmark_ticker: Benchmark ticker (required)
             plot_results: Whether to create visualization plots
             
         Returns:

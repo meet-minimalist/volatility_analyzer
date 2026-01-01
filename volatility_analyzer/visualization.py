@@ -74,7 +74,7 @@ class AnalysisVisualizer:
             axes[2, 1], report.rolling_metrics
         )
         
-        plt.tight_layout()
+        plt.tight_layout(rect=[0, 0.03, 1, 0.95], h_pad=3.0)
         plt.show()
     
     @staticmethod

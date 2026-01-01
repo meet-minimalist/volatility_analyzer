@@ -28,6 +28,11 @@ class MetricsCalculator:
             Series of daily returns
         """
         prices = price_data['Close']
+        
+        # Handle duplicate indices to prevent reindexing errors
+        if prices.index.has_duplicates:
+            prices = prices[~prices.index.duplicated(keep='first')]
+            
         returns = prices.pct_change().dropna()
         return returns
     
@@ -218,4 +223,3 @@ class MetricsCalculator:
         result['Rolling_R2'] = result['Rolling_Correlation'] ** 2
         
         return result[['Rolling_Beta', 'Rolling_R2']]
-

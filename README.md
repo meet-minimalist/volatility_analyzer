@@ -24,3 +24,7 @@ report, stock_data, benchmark_data = analyzer.analyze_stock(
     plot_results=True
 )
 ```
+
+## Images
+![](./figures/Figure_1.png)
+![](./figures/Figure_2.png)
