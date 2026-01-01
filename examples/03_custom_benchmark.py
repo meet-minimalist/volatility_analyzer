@@ -1,13 +1,13 @@
 """
 # @ Author: Meet Patel
-# @ Create Time: 2026-01-01 14:18:01
+# @ Create Time: 2026-01-01 14:18:34
 # @ Modified by: Meet Patel
-# @ Modified time: 2026-01-01 14:19:09
+# @ Modified time: 2026-01-01 14:19:34
 # @ Description:
 """
 
 """
-Example 1: Single Stock Analysis
+Example 4: Custom Benchmark Mapping
 """
 
 import logging
@@ -15,18 +15,14 @@ from volatility_analyzer import VolatilityAnalyzer
 
 
 def run_example():
-    # Configure logging
     logging.basicConfig(level=logging.INFO)
-
     analyzer = VolatilityAnalyzer(years_of_data=3)
 
-    print("=" * 80)
-    print("EXAMPLE 1: Single Stock Analysis")
+    print("\n\n" + "=" * 80)
+    print("EXAMPLE 3: Custom Benchmark Mapping")
     print("=" * 80)
 
-    report, stock_data, benchmark_data = analyzer.analyze_stock(
-        "RELIANCE.NS", "^NSEI", plot_results=True
-    )
+    report_aapl, _, _ = analyzer.analyze_stock("AAPL", "^GSPC", plot_results=True)
 
 
 if __name__ == "__main__":
